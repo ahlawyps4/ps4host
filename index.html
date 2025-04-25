@@ -1,29 +1,45 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PS4 GoldHEN Exploit</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS4 Exploit Host</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #0f0;
+      font-family: monospace;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .firmware-list {
+      list-style: none;
+      padding: 0;
+    }
+    .firmware-list li {
+      margin: 10px 0;
+    }
+    a {
+      color: #0f0;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-    <h1>GoldHEN PS4 Exploit</h1>
-    <p>قم بتحميل payload من USB لتشغيله تلقائيًا:</p>
-    <input type="file" id="fileInput" accept=".bin">
-    <button onclick="startExploit()">تشغيل GoldHEN</button>
+  <h1>🎮 PS4 Jailbreak Host</h1>
+  <p>Select your firmware version:</p>
+  <ul class="firmware-list">
+    <li><a href="9.00/index.html">Firmware 9.00</a></li>
+  </ul>
 </body>
-<script>
-    // دالة لتشغيل الـ exploit
-    function startExploit() {
-        var fileInput = document.getElementById('fileInput');
-        var file = fileInput.files[0];
-        
-        if (file) {
-            // هنا تكتب الكود لتحميل الـ payload على PS4
-            alert("تم تحديد الملف: " + file.name);
-            // هنا يمكن إرسال الملف إلى PS4 من خلال JavaScript حسب طريقة الاستقبال الخاصة بـ GoldHEN
-        } else {
-            alert("يرجى اختيار ملف أولاً.");
-        }
-    }
-</script>
 </html>
