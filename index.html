@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My PS4 9.00 Exploit</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #1e1e1e;
+      color: #fff;
+      padding: 50px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 10px;
+      background-color: #28a745;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to My PS4 9.00 Exploit Host</h1>
+  <p>Click the button below to run GoldHEN 2.4b17 (Latest)</p>
+  <button onclick="sendPayload('goldhen_2.4b17.bin')">Launch GoldHEN 2.4b17</button>
+
+  <script>
+    function sendPayload(payloadFile) {
+      const ps4IP = prompt("Enter your PS4 IP address:");
+      if (!ps4IP) return alert("IP address is required!");
+
+      const ws = new WebSocket('ws://' + ps4IP + ':9020');
+      ws.binaryType = 'arraybuffer';
+
+      ws.onopen = () => {
+        fetch(payloadFile)
+          .then(res => res.arrayBuffer())
+          .then(buffer => ws.send(buffer))
+          .catch(err => alert("Failed to load payload: " + err));
+      };
+
+      ws.onerror = () => alert("WebSocket connection failed. Make sure GoldHEN Loader is active on PS4.");
+    }
+  </script>
+</body>
+</html>
