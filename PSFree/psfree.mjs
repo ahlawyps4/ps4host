@@ -860,3 +860,9 @@ async function main() {
     import('./lapse.mjs');
 }
 main();
+// نهاية psfree.mjs أو داخل main()
+clear_log();
+log('🚀 الانتقال إلى Stage 2 (Kernel)…');
+import('./lapse.mjs').then(mod => {
+  mod.default(log);
+});

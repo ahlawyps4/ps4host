@@ -1734,3 +1734,28 @@ export async function kexploit() {
     }
 }
 kexploit();
+// lapse.mjs
+
+import { log, sleep } from './module/utils.mjs';
+import { installPkg } from './module/ps4pkg.mjs';  // افترض وجود مكتبة لتحميل PKG
+
+export default async function(log) {
+  log('🔥 Stage 2: بدء تثبيت GoldHEN…');
+
+  // المسار إلى ملف PKG داخل المشروع أو URL خارجي
+  const pkgPath = './payloads/goldhen_2.4b18.3.pkg';
+
+  try {
+    // فرضًا نستخدم دالة installPkg لتثبيت الباكيج على النظام
+    await installPkg(pkgPath);
+    log('✅ تم تثبيت GoldHEN 2.4b18.3 بنجاح!');
+  } catch (e) {
+    log('❌ فشل في تثبيت GoldHEN:');
+    log(e.toString());
+  }
+
+  // نفّس خطوة إعادة التشغيل التلقائي لو حبّيت
+  log('🔄 جاري إعادة تشغيل الجهاز لتفعيل GoldHEN…');
+  await sleep(2000);
+  window.location.reload();  // يعيد تحميل الصفحة، الجهاز قد يفعل GoldHEN بعد الإقلاع
+}
