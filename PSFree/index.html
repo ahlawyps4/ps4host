@@ -3,9 +3,36 @@
   <head>
 
     <script>
-        function DLProgress(e){Percent=(Math.round(e.loaded / e.total * 100));document.title="تثبيت الصفحة اوف لاين ...: " + Percent + "%";}
-        function DisplayCacheProgress(){setTimeout(function(){;document.title="نجح تثبيت الصفحة اوف لاين !";},1000);setTimeout(function(){window.location.href = document.referrer;},3000);}window.applicationCache.addEventListener("progress",DLProgress,false);window.applicationCache.oncached=function(e){DisplayCacheProgress();};window.applicationCache.onupdateready=function(e){DisplayCacheProgress();};
-    </script>
+  // تحديث العنوان بنسبة التقدم أثناء التحميل
+  function DLProgress(e) {
+    var percent = Math.round((e.loaded / e.total) * 100);
+    document.title = "تثبيت الصفحة أوفلاين ...: " + percent + "%";
+  }
+
+  // عند اكتمال التخزين المؤقت
+  function DisplayCacheProgress() {
+    setTimeout(function () {
+      document.title = "✅ تم تثبيت الصفحة أوفلاين!";
+    }, 1000);
+
+    setTimeout(function () {
+      // الرجوع للصفحة السابقة
+      window.location.href = document.referrer;
+    }, 3000);
+  }
+
+  // التفاعل مع التخزين المؤقت
+  window.applicationCache.addEventListener("progress", DLProgress, false);
+
+  window.applicationCache.oncached = function (e) {
+    DisplayCacheProgress();
+  };
+
+  window.applicationCache.onupdateready = function (e) {
+    DisplayCacheProgress();
+  };
+</script>
+
     <meta charset="UTF-8">
     <title>AHLAWY- PS4 لتفعيل سوفت 9.00</title>
     <link rel='stylesheet' href='./css/index.css'>
